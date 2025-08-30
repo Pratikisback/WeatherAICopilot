@@ -3,7 +3,6 @@ import {
   addThread,
   clearCurrentThread,
   updateThread,
-  viewThreadById,
 } from "@/redux/features/threadSlice";
 import { ArrowDown } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
@@ -24,7 +23,8 @@ const CopilotChatWindow = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   const selectedThread = useSelector(
-    (state: any) => state.threads.currentThread
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (state: any) => state?.threads?.currentThread
   );
   const dispatch = useDispatch();
 
@@ -99,7 +99,7 @@ const CopilotChatWindow = () => {
         partial += decoder.decode(value, { stream: true });
 
         // Process each complete line
-        let lines = partial.split("\n");
+        const lines = partial.split("\n");
         partial = lines.pop()!; // keep the incomplete part for next chunk
 
         console.log(lines, "lines");

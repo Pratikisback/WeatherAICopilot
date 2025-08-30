@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { Threads, Messages, Message, Thread } from "../../models/MessageModel";
+import { Threads, Thread } from "../../models/MessageModel";
 
 const initialState: { threads: Threads; currentThread: Thread | null } = {
   threads: [],

@@ -13,3 +13,13 @@ export type Thread = {
   activeThread?: boolean;
 };
 export type Threads = Thread[];
+
+
+export interface ThreadsState {
+  currentThread: Thread | null;
+  threads: Threads;
+}
+
+export interface RootState {
+  threads: ThreadsState;
+}

@@ -1,12 +1,14 @@
 import { viewThreadById } from "@/redux/features/threadSlice";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { RootState, Thread } from "../../models/MessageModel";
 const ThreadBox = () => {
   const dispatch = useDispatch();
-  const threads = useSelector((state: any) => state.threads.threads);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const threads = useSelector((state: RootState) => state.threads.threads);
   const selectedThread = useSelector(
-    (state: any) => state.threads.currentThread
+    (state: RootState) => state.threads.currentThread
   );
   const selectThread = (threadId: string) => {
     // Functionality to select and load a chat thread
@@ -18,7 +20,7 @@ const ThreadBox = () => {
     <div className="py-5 px-3">
       <h2 className="text-2xl font-bold mb-4 text-nowrap ">Saved Threads</h2>
       <ul>
-        {threads.map((thread: any) => (
+        {threads.map((thread: Thread) => (
           <li
             key={thread.id}
             onClick={() => {
